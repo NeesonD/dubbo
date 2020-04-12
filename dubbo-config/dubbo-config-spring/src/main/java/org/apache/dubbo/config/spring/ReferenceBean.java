@@ -67,6 +67,7 @@ public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
 
     @Override
     public Object getObject() {
+        // 生成代理对象
         return get();
     }
 
