@@ -18,11 +18,13 @@
  */
 package org.apache.dubbo.demo.provider;
 
+import com.google.common.collect.Lists;
 import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.RegistryConfig;
 import org.apache.dubbo.config.ServiceConfig;
 import org.apache.dubbo.config.bootstrap.DubboBootstrap;
 import org.apache.dubbo.demo.DemoService;
+import org.apache.dubbo.demo.GreetingService;
 
 import java.util.concurrent.CountDownLatch;
 
@@ -44,10 +46,16 @@ public class Application {
         service.setInterface(DemoService.class);
         service.setRef(new DemoServiceImpl());
 
+        ServiceConfig<GreetingService> service2 = new ServiceConfig<>();
+        service2.setInterface(GreetingService.class);
+        service2.setRef(new GreetingServiceImpl());
+
+
+
         DubboBootstrap bootstrap = DubboBootstrap.getInstance();
         bootstrap.application(new ApplicationConfig("dubbo-demo-api-provider"))
                 .registry(new RegistryConfig("zookeeper://127.0.0.1:2181"))
-                .service(service)
+                .services(Lists.newArrayList(service,service2))
                 .start()
                 .await();
     }
