@@ -41,6 +41,8 @@ import static org.springframework.beans.factory.BeanFactoryUtils.beansOfTypeIncl
 
 /**
  * ReferenceFactoryBean
+ * 这里是个工厂 bean，@Reference 类似于 @Autowire，通过此 factoryBean 可以给接口生成代理类
+ * 可以看 demo： https://github.com/NeesonD/rpc-demo
  */
 public class ReferenceBean<T> extends ReferenceConfig<T> implements FactoryBean,
         ApplicationContextAware, InitializingBean, DisposableBean {

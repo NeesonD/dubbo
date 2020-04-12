@@ -77,7 +77,7 @@ import static org.springframework.util.ClassUtils.resolveClassName;
 /**
  * {@link Service} Annotation
  * {@link BeanDefinitionRegistryPostProcessor Bean Definition Registry Post Processor}
- *
+ * 这是个 BeanDefinitionRegistryPostProcessor
  * @since 2.5.8
  */
 public class ServiceAnnotationBeanPostProcessor implements BeanDefinitionRegistryPostProcessor, EnvironmentAware,
